@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanji</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            position: relative;
+        }
+        .image-container {
+            position: relative; /* Définir la position relative pour le conteneur d'image */
+            width: 40%;
+            margin: 20px auto;
+        }
+        img {
+            width: 100%;
+            position: absolute; /* Définir la position absolue pour les images */
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>VOCABULAIRE</h1>
+
+<div class="image-container">
+    <img id="randomImage" src="" alt="Image aléatoire">
+    <img id="emptyImage" src="imgVide.png" alt="Image vide" style="display: none;">
+</div>
+
+<button onclick="afficherImagesAleatoires()" style="margin-right: 4000px;">Images suivantes</button>
+
+<button onclick="afficherReponse()" style="margin-right: 4000px;">Afficher Réponse</button>
+
+<script>
+    var indexImagePrecedente = -1; // Index de l'image précédemment affichée
+
+    function afficherImagesAleatoires() {
+        // Tableau des noms d'images
+        var images  = [
+    "img1.jpg",
+    "img2.jpg",
+    "img3.jpg",
+    "img4.jpg",
+    "img5.jpg",
+    "img6.jpg",
+    "img7.jpg",
+    "img8.jpg",
+    "img9.jpg",
+    "img10.jpg",
+    "img11.jpg",
+    "img12.jpg",
+    "img13.jpg",
+    "img14.jpg",
+    "img15.jpg",
+    "img16.jpg",
+    "img17.jpg",
+    "img18.jpg",
+    "img19.jpg",
+    "img20.jpg",
+    "img21.jpg",
+    "img22.jpg",
+    "img23.jpg",
+    "img24.jpg",
+    "img25.jpg"
+];
+
+        // Générer un index aléatoire différent de l'index de l'image précédente
+        var index;
+        do {
+            index = Math.floor(Math.random() * images.length);
+        } while (index === indexImagePrecedente);
+        
+        // Mémoriser l'index de l'image actuelle pour la prochaine itération
+        indexImagePrecedente = index;
+        
+        // Chemin de l'image aléatoire
+        var imagePath = "images/" + images[index];
+        
+        // Mettre à jour l'attribut src de l'élément img
+        document.getElementById("randomImage").src = imagePath;
+
+        document.getElementById("emptyImage").style.display = "block";
+    }
+
+    function afficherReponse() {
+        // Afficher l'image vide superposée à l'image aléatoire
+        document.getElementById("emptyImage").style.display = "none";
+    }
+    
+    // Afficher une image aléatoire au chargement de la page
+    window.onload = afficherImagesAleatoires;
+
+</script>
+
+</body>
+</html>
